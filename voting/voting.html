@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting - Civic Engagement Tracker</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Adjust path if needed -->
+    <link rel="stylesheet" href="voting.css"> <!-- Specific CSS for voting page -->
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Engagement Tracker</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="voting.html">Voting</a></li>
+                <li><a href="../voting/">Important Dates</a></li>
+                <li><a href="../voting/">Resources</a></li>
+                <li><a href="../voting/">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Voting</h1>
+    
+        <div class="accordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" onclick="toggleAccordion(this)">Bucks County</h2>
+                <div class="accordion-content">
+                    <div class="voting-feature">
+                        <h3>Eligibility Requirements</h3>
+                        <p>To vote in county elections, individuals must be U.S. citizens, residents of Bucks County, and at least 18 years old by election day. Voter registration must be completed ahead of time to participate.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>How to Register</h3>
+                        <p>County registration typically involves filling out a form either online or in person at designated locations, such as the county election office. Ensure you check the registration deadlines to be eligible to vote.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Voting Methods</h3>
+                        <p>Methods for voting in Bucks County may include in-person voting at polling places, early voting, and mail-in ballots. Each method has specific rules that voters should be aware of prior to election day.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Election Administration</h3>
+                        <p>The Bucks County Board of Elections administers local elections. For more information, visit their <a href="https://www.buckscounty.gov/1252/Board-of-Elections">website</a>.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item">
+                <h2 class="accordion-header" onclick="toggleAccordion(this)">Pennsylvania</h2>
+                <div class="accordion-content">
+                    <div class="voting-feature">
+                        <h3>Eligibility Requirements</h3>
+                        <p>To vote in Pennsylvania, you must be a U.S. citizen, a resident of Pennsylvania for at least 30 days before the election, and at least 18 years old by election day. It’s essential to verify your voter registration status before the election.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>How to Register</h3>
+                        <p>Registration in Pennsylvania can be done online, by mail, or in person. Make sure to register by the state's deadline to ensure your eligibility to vote.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Voting Methods</h3>
+                        <p>Voting methods in Pennsylvania include in-person voting on election day, early voting, and absentee voting. Voters should check the specific guidelines for each method to ensure a smooth voting experience.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Election Administration</h3>
+                        <p>The Pennsylvania Department of State oversees elections in the state. Visit their <a href="https://www.pa.gov/en/agencies/dos/department-and-offices/be.html">website</a> for more information.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item">
+                <h2 class="accordion-header" onclick="toggleAccordion(this)">USA</h2>
+                <div class="accordion-content">
+                    <div class="voting-feature">
+                        <h3>Eligibility Requirements</h3>
+                        <p>Federal voting eligibility is determined by laws that require voters to be U.S. citizens, at least 18 years old, and residents of the state where they intend to vote. Each state may have additional requirements, such as voter ID laws.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>How to Register</h3>
+                        <p>Voters can register for federal elections through their respective state’s registration systems, which may include online options, mail-in applications, or in-person registration. Registration deadlines vary by state, so it’s important to check ahead of time.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Voting Methods</h3>
+                        <p>Federal elections offer several voting methods, including in-person voting on election day, early voting, and mail-in ballots. Voters should familiarize themselves with the voting method available in their state.</p>
+                    </div>
+                    <div class="voting-feature">
+                        <h3>Election Administration</h3>
+                        <p>The Federal Election Commission (FEC) is responsible for overseeing federal elections. For detailed information, visit the <a href="https://www.fec.gov">FEC website</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <section class="voting-section branch">
+            <div class="voting-feature">
+                <h2>Upcoming Elections</h2>
+            </div>
+        </section>
+        <section class="voting-section">
+            <div class="voting-feature">
+                <h3>Bucks County</h3>
+                <p>The next election in Bucks County is scheduled for November 5, 2024. Voters should ensure they are registered and ready to participate in local races and ballot measures. For more information on candidates and issues, visit the Bucks County Board of Elections website.</p>
+            </div>
+            <div class="voting-feature">
+                <h3>Pennsylvania</h3>
+                <p>In Pennsylvania, the next statewide election will also be held on November 5, 2024. Voters can prepare by checking their registration status and familiarizing themselves with the candidates and policies that will be voted on. Stay updated with the Pennsylvania Department of State's resources.</p>
+            </div>
+            <div class="voting-feature">
+                <h3>Federal</h3>
+                <p>The next federal election is coming up on November 5, 2024. This includes important positions such as Congressional seats. Voters should confirm their registration and be informed about the candidates on the ballot for national offices.</p>
+            </div>
+            <div class="voting-feature countdown" style="grid-column: span 2; text-align: center;">
+                <h3>Countdown to Next Election</h3>
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="countdown-item">
+                        <span id="days">0</span>
+                        <p>Days</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">0</span>
+                        <p>Hours</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">0</span>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">0</span>
+                        <p>Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="learn-more">
+            <div class="voting-feature">
+                <h2>Learn More</h2>
+                <p>To learn more about voting government operations, visit the official government website.</p>
+                <a href="https://www.usa.gov" class="feature-button" target="_blank">Visit Voting Government Website</a>
+            </div>
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 Civic Engagement Tracker. All rights reserved.</p>
+    </footer>
+
+    <script src="voting.js"></script> <!-- Specific JS for voting page -->
+</body>
+</html>
