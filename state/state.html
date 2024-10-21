@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pennsylvania - Civic Connect</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Adjust path if needed -->
+    <link rel="stylesheet" href="state.css"> <!-- Specific CSS for state page -->
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="state.html">State Government</a></li>
+                <li><a href="../state/upcoming-meetings.html">Upcoming Meetings</a></li>
+                <li><a href="../state/current-legislation.html">Current Legislation</a></li>
+                <li><a href="../state/calender.html">Calender</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>State Government</h1>
+        <section class="state-header">
+            <img src="../graphics/paseal.jfif" alt="State Board" class="state-board-image">
+        </section>
+
+        <section class="meet-state-officials">
+            <div class="state-feature">
+                <h2>Meet the leadership of Pennsylvania</h2>
+                <div class="official-list">
+                    <div class="official" onclick="showPopup(1)">
+                        <h3>Governor Josh Shapiro</h3>
+                    </div>
+                    <div class="official" onclick="showPopup(2)">
+                        <h3>Lieutenant Governor Austin A. Davis</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="state-feature">
+                <h2>Meet Bucks County's representation in the General Assembly</h2>
+                <div class="official-list">
+                    <div class="official" onclick="showPopup(3)">
+                        <h3>Representative Perry S. Warren</h3>
+                    </div>
+                    <div class="official" onclick="showPopup(4)">
+                        <h3>Senator Steven J. Santarsiero</h3>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Popup Modal -->
+            <div id="official-popup" class="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <img id="popup-image" alt="Official" class="popup-image">
+                    <h3 id="popup-title"></h3>
+                    <p id="popup-bio"></p>
+                </div>
+            </div>
+            <section class="state-section branch">
+                <div class="state-feature">
+                    <h2>Executive Branch</h2>
+                    <p>The Executive Branch is tasked with enforcing state laws and overseeing the administration of government operations. This branch plays a crucial role in managing public services and implementing state policies.</p>
+                </div>
+            </section>
+            <section class="state-section">
+                <div class="state-feature">
+                    <h3>The Governor's Role</h3>
+                    <p>The Governor acts as the chief executive officer, responsible for enforcing laws, managing the state's budget, and representing Pennsylvania in various capacities.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>The Lieutenant Governor's Role</h3>
+                    <p>The Lieutenant Governor supports the Governor and is responsible for presiding over the state Senate, while also taking on various special projects.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>State Departments</h3>
+                    <p>Pennsylvania's state departments handle specific areas such as health, education, and transportation, each working to implement policies and provide services to residents.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Executive Orders</h3>
+                    <p>Executive Orders issued by the Governor allow for the direct management of state operations and can address urgent issues without legislative approval.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>State Agencies</h3>
+                    <p>Various state agencies are responsible for specific functions, including environmental protection, public safety, and economic development, ensuring the effective operation of state governance.</p>
+                </div>
+            </section>
+            
+            <section class="state-section branch">
+                <div class="state-feature">
+                    <h2>Legislative Branch</h2>
+                    <p>The Legislative Branch is responsible for crafting and enacting laws. It consists of two chambers: the Pennsylvania Senate and the House of Representatives, which work together to address the needs of the state.</p>
+                </div>
+            </section>
+            <section class="state-section">
+                <div class="state-feature">
+                    <h3>The Pennsylvania Senate</h3>
+                    <p>The Senate represents the interests of Pennsylvanians, with Senators serving four-year terms and focusing on legislation that impacts the entire state.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>The Pennsylvania House of Representatives</h3>
+                    <p>The House consists of members who serve two-year terms, representing districts and addressing local issues through state legislation.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Legislative Processes</h3>
+                    <p>This section outlines how bills are drafted, debated, and passed, including the roles of committees and the potential for vetoes by the Governor.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Committees</h3>
+                    <p>Committees in both chambers play a vital role in reviewing proposed legislation, holding hearings, and conducting investigations to guide policy decisions.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Bicameral System</h3>
+                    <p>The bicameral structure allows for comprehensive discussions and representation of diverse views, although it can sometimes lead to legislative gridlock.</p>
+                </div>
+            </section>
+            
+            <section class="state-section branch">
+                <div class="state-feature">
+                    <h2>Judicial Branch</h2>
+                    <p>The Judicial Branch interprets state laws and ensures justice is administered fairly throughout Pennsylvania, protecting the rights of individuals.</p>
+                </div>
+            </section>
+            <section class="state-section">
+                <div class="state-feature">
+                    <h3>Pennsylvania Supreme Court</h3>
+                    <p>The Supreme Court is the highest court in the state, tasked with interpreting the law and ensuring that justice is upheld in legal proceedings.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Lower Courts</h3>
+                    <p>Lower courts handle cases at the trial level, including common pleas courts and magistrate courts, dealing with a variety of civil and criminal matters.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Judicial Appointments</h3>
+                    <p>Judges in Pennsylvania are elected or appointed and play a key role in maintaining the integrity of the legal system through fair adjudication of cases.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Judicial Review</h3>
+                    <p>The power of judicial review allows the courts to evaluate the constitutionality of laws and government actions, ensuring adherence to the Pennsylvania Constitution.</p>
+                </div>
+                <div class="state-feature">
+                    <h3>Key Supreme Court Cases</h3>
+                    <p>Landmark cases in Pennsylvania have shaped civil rights, education, and governance, reflecting the evolving landscape of law and society.</p>
+                </div>
+            </section>
+            
+            <section class="learn-more">
+                <div class="state-feature">
+                    <h2>Learn More</h2>
+                    <p>To learn more about state government operations, visit the official state website. Explore various departments and their services to stay informed about state initiatives and community programs.</p>
+                    <a href="https://www.pa.gov" class="feature-button" target="_blank">Visit State Government Website</a>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="state.js"></script> <!-- Specific JS for state page -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

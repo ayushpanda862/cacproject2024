@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Voting</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Common styles -->
+    <link rel="stylesheet" href="voting.css"> <!-- Specific CSS for voting legislation page -->
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="voting.html">Voting</a></li>
+                <li><a href="../voting/resources.html">Resources</a></li>
+                <li><a href="../voting/faqs.html">FAQs</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Frequently Asked Questions</h1>
+<section class="voting-section">
+    <div class="voting-feature">
+        <h2>What are the eligibility requirements to vote?</h2>
+        <p>To vote in the U.S., you must be a U.S. citizen, at least 18 years old on or before election day, and meet your state's residency requirements.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>How do I register to vote?</h2>
+        <p>You can register online, by mail, or in person, depending on your state. It's important to check the specific methods and deadlines in your area.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>What are the different voting methods available?</h2>
+        <p>Voting methods vary by state, including in-person voting on election day, early voting, and mail-in voting (absentee voting).</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>What do I need to bring to the polls?</h2>
+        <p>Requirements vary, but many states require some form of identification. It's best to check your state’s specific ID requirements before voting.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>How can I check my voter registration status?</h2>
+        <p>You can check your voter registration status by visiting your state’s election office website or using resources like CanIVote.org.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>What should I do if I encounter problems while voting?</h2>
+        <p>If you experience issues while voting, such as being turned away at the polls, you should contact a local election protection hotline or your state’s election office for assistance.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>Can I vote if I have a felony conviction?</h2>
+        <p>Voting rights for individuals with felony convictions vary by state. Some states restore voting rights after serving time, while others may have different requirements.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>How do mail-in ballots work?</h2>
+        <p>Mail-in ballots allow voters to receive and submit their votes by mail. Procedures for requesting and returning mail-in ballots differ by state, so be sure to check your state's guidelines.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>What if I’m unable to vote in person?</h2>
+        <p>If you cannot vote in person, you may have options such as early voting or mail-in voting. Check your state's election office for available alternatives.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>What is voter suppression?</h2>
+        <p>Voter suppression refers to tactics used to discourage or prevent specific groups from voting, which can include strict ID laws, limited polling locations, and misinformation about voting.</p>
+    </div>
+
+    <div class="voting-feature">
+        <h2>How can I get involved in the voting process?</h2>
+        <p>You can get involved by educating yourself about the voting process, helping others register, volunteering as a poll worker, or participating in advocacy efforts for fair voting practices.</p>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    </body>
+</html>

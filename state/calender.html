@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender - Pennsylvania</title>
+    <link rel="stylesheet" href="../index.css"> <!-- General styles -->
+    <link rel="stylesheet" href="state.css"> <!-- Specific styles for state -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    // September events
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-09-16T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-09-17T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-09-18T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-09-23T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-09-24T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-09-25T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-09-30T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'PSPC Meeting',
+                        start: '2024-09-16T10:00:00',
+                        description: 'Professional Standards and Practices Commission Meeting'
+                    },
+                    {
+                        title: 'Bureau of Professional Occupations Meeting',
+                        start: '2024-09-10T09:00:00',
+                        description: 'Location: Bureau of Professional Occupations'
+                    },
+
+                    // October events
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-10-01T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-10-02T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-10-07T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-10-08T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Senate Session Day',
+                        start: '2024-10-09T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-10-01T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-10-02T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'Bureau of Professional Occupations Meeting',
+                        start: '2024-10-29T09:00:00',
+                        description: 'Location: Bureau of Professional Occupations'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-10-21T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-10-22T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    },
+                    {
+                        title: 'House Session Day',
+                        start: '2024-10-23T10:00:00',
+                        description: 'Location: State Capitol Building'
+                    }
+                ],
+                eventClick: function(info) {
+                    alert(info.event.title + "\n" + (info.event.extendedProps.description || ''));
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="state.html">State Government</a></li>
+                <li><a href="../state/upcoming-meetings.html">Upcoming Meetings</a></li>
+                <li><a href="../state/current-legislation.html">Current Legislation</a></li>
+                <li><a href="../state/calender.html">Calender</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>State Calendar</h1>
+        <div id="calendar"></div> <!-- This div is crucial for rendering the calendar -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

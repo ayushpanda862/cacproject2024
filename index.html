@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Connect</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 1.5em;
+}
+
+
+    </style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="county/county.html">County Government</a></li>
+                <li><a href="state/state.html">State Government</a></li>
+                <li><a href="federal/federal.html">Federal Government</a></li>
+                <li><a href="voting/voting.html">Voting</a></li>
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="file:///C:/Users/ayush/Documents/CAC%20Proj/login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+        </nav>        
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empower Your Voice</h1>
+            <p>Stay connected with your community and engage in local governance. Your participation shapes the future.</p>
+            <a href="signup.html" class="cta-button">Get Started</a>
+        </div>
+        <div class="hero-graphics">
+        </div>
+    </section>
+
+    <main>
+        <main>
+            <section class="features-section">
+                <h2 class="section-heading">Government</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Local</h3>
+                        <p>Discover your local representatives, their roles, and how to contact them directly for assistance.</p>
+                        <a href="county/county.html" class="feature-button">Learn More</a>
+                    </div>
+                    <div class="feature">
+                        <h3>State</h3>
+                        <p>Stay informed about state legislation, local government meetings, and important community events.</p>
+                        <a href="state/state.html" class="feature-button">Learn More</a>
+                    </div>
+                    <div class="feature">
+                        <h3>Federal</h3>
+                        <p>Get updates on federal initiatives and how they impact your community.</p>
+                        <a href="federal/federal.html" class="feature-button">Learn More</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="features-section">
+                <h2 class="section-heading">Voting</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Registration</h3>
+                        <p>Ensure you're registered to vote by checking your status and understanding the registration process.</p>
+                        <a href="voting/resources.html" class="feature-button">Learn More</a>
+                    </div>
+                    <div class="feature">
+                        <h3>Voting Methods</h3>
+                        <p>Explore different ways to cast your vote, including early and absentee options.</p>
+                        <a href="voting/voting.html" class="feature-button">Learn More</a>
+                    </div>
+                    <div class="feature">
+                        <h3>FAQs</h3>
+                        <p>Get answers to common questions about voting and what to expect on Election Day.</p>
+                        <a href="voting/faqs.html" class="feature-button">Visit FAQ</a>
+                    </div>
+                    
+                </div>
+            </section>
+            
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', 'login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
+
+
+<!--note to self: change it to Washington DC reps and senators in all files after submission if won so it works in DC

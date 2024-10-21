@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Schedules - Bucks County</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Specific CSS for meeting schedules page -->
+    <link rel="stylesheet" href="county.css"> <!-- Specific CSS for meeting schedules page -->
+</head>
+<body>
+    <style>
+        body {
+    overflow: hidden;
+}
+</style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="county.html">County Government</a></li>
+                <li><a href="../county/meeting-schedules.html">Meeting Schedules</a></li>
+                <li><a href="../county/calender.html">Calendar</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Upcoming Meeting Schedule</h1>
+        <section class="county-section">
+            <div class="county-feature">
+                <h2>Agricultural Land Preservation Board Meeting</h2>
+                <p><strong>Date:</strong> September 5, 2024</p>
+                <p><strong>Time:</strong> 7:30 PM - 8:30 PM</p>
+                <p><strong>Location:</strong> The Almshouse</p>
+                <p><strong>Details:</strong> Monthly meeting discussing agricultural preservation initiatives.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Board of Elections Meeting</h2>
+                <p><strong>Date:</strong> September 10, 2024</p>
+                <p><strong>Time:</strong> 11:30 AM - 12:30 PM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building</p>
+                <p><strong>Details:</strong> Discussing upcoming election logistics.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Prison Oversight Board Meeting</h2>
+                <p><strong>Date:</strong> September 11, 2024</p>
+                <p><strong>Time:</strong> 1:30 PM - 2:30 PM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building, Room 110A</p>
+                <p><strong>Details:</strong> Monthly oversight discussion.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Retirement Board Meeting</h2>
+                <p><strong>Date:</strong> September 18, 2024</p>
+                <p><strong>Time:</strong> 9:30 AM - 10:00 AM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building</p>
+                <p><strong>Details:</strong> Review of pension fund matters.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Commissioners Meeting</h2>
+                <p><strong>Date:</strong> September 18, 2024</p>
+                <p><strong>Time:</strong> 10:30 AM - 11:30 AM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building</p>
+                <p><strong>Details:</strong> Business meeting for county operations.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Planning Commission Meeting</h2>
+                <p><strong>Date:</strong> October 1, 2024</p>
+                <p><strong>Time:</strong> 2:00 PM - 3:00 PM</p>
+                <p><strong>Location:</strong> The Almshouse</p>
+                <p><strong>Details:</strong> Discussion on land use planning.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Salary Board Meeting</h2>
+                <p><strong>Date:</strong> October 2, 2024</p>
+                <p><strong>Time:</strong> 9:30 AM - 10:00 AM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building</p>
+                <p><strong>Details:</strong> Review of salary matters.</p>
+            </div>
+            <div class="county-feature">
+                <h2>Commissioners Meeting</h2>
+                <p><strong>Date:</strong> October 2, 2024</p>
+                <p><strong>Time:</strong> 10:30 AM - 11:30 AM</p>
+                <p><strong>Location:</strong> Bucks County Administration Building</p>
+                <p><strong>Details:</strong> Business meeting for county operations.</p>
+            </div>
+            <!-- Add more meetings as necessary -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="meeting-schedules.js"></script> <!-- Specific JS for meeting schedules page -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

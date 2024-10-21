@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Federal Issues - United States</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Common styles -->
+    <link rel="stylesheet" href="federal.css"> <!-- Specific CSS for federal legislation page -->
+</head>
+<body>
+    <style>
+        body {
+    overflow: hidden;
+}
+</style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="federal.html">Federal Government</a></li>
+                <li><a href="../federal/legislative-processes.html">Legislative Processes</a></li>
+                <li><a href="../federal/current-bills.html">Current Bills</a></li>
+                <li><a href="../federal/major-federal-issues.html">Major Federal Issues</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Major Federal Issues</h1>
+<section class="federal-section">
+    <div class="federal-feature">
+        <h2>Inflation</h2>
+        <p><strong>Description:</strong> Inflation refers to the increase in prices and the decrease in purchasing power of money, impacting the cost of living for individuals and families.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Bipartisan Cooperation</h2>
+        <p><strong>Description:</strong> Bipartisan cooperation involves collaboration between the two major political parties in the U.S.—Democrats and Republicans—to pass legislation and address national issues.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Healthcare Affordability</h2>
+        <p><strong>Description:</strong> Healthcare affordability pertains to the financial accessibility of medical services and insurance, impacting individuals' ability to receive necessary care.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Drug Addiction</h2>
+        <p><strong>Description:</strong> Drug addiction is a chronic disease characterized by compulsive drug seeking and use, despite harmful consequences, affecting individuals, families, and communities.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Federal Budget Deficit</h2>
+        <p><strong>Description:</strong> The federal budget deficit occurs when government expenditures exceed its revenues, leading to increased national debt and financial instability.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Illegal Immigration</h2>
+        <p><strong>Description:</strong> Illegal immigration refers to the movement of people into a country without legal authorization, raising concerns about border security, legal status, and social services.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Gun Violence</h2>
+        <p><strong>Description:</strong> Gun violence encompasses various forms of violence involving firearms, including homicides, suicides, and mass shootings, which pose significant public safety challenges.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Violent Crime</h2>
+        <p><strong>Description:</strong> Violent crime includes offenses such as murder, assault, and robbery, which threaten personal safety and community security.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Moral Values</h2>
+        <p><strong>Description:</strong> Moral values refer to the principles and standards of behavior that are considered important by individuals and society, impacting social cohesion and governance.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>K-12 School Quality</h2>
+        <p><strong>Description:</strong> K-12 school quality pertains to the effectiveness of public education systems in providing students with the skills and knowledge necessary for success in life.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>Climate Change</h2>
+        <p><strong>Description:</strong> Climate change is a long-term alteration of temperature and typical weather patterns in a place, primarily driven by human activities like fossil fuel consumption, leading to environmental impacts.</p>
+    </div>
+
+    <div class="federal-feature">
+        <h2>International Terrorism</h2>
+        <p><strong>Description:</strong> International terrorism involves violent acts carried out by groups or individuals against civilian targets across national borders, often motivated by ideological, political, or religious objectives.</p>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="legislation.js"></script> <!-- Specific JS for federal legislation page -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Voting</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Common styles -->
+    <link rel="stylesheet" href="voting.css"> <!-- Specific CSS for voting resources page -->
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="voting.html">Voting</a></li>
+                <li><a href="../voting/resources.html">Resources</a></li>
+                <li><a href="../voting/faqs.html">FAQs</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Voting Resources in Pennsylvania</h1>
+        <section class="voting-section">
+            <div class="voting-feature">
+                <h2>Voter Registration</h2>
+                <p>To register to vote in Pennsylvania, visit the <a href="https://www.votespa.com/">Pennsylvania Department of State's website</a>. You can register online, by mail, or in person. The registration deadline is 15 days before an election.</p>
+            </div>
+
+            <div class="voting-feature">
+                <h2>Voting Methods</h2>
+                <p>In Pennsylvania, you can vote in person on Election Day, during early voting, or by mail-in ballot. Find detailed information on these options at <a href="https://www.votespa.com/">VotePA.</a></p>
+            </div>
+
+            <div class="voting-feature">
+                <h2>Voter ID Requirements</h2>
+                <p>When voting in Pennsylvania, you must show a form of ID if you are voting for the first time. Acceptable IDs include a driver's license, state ID, or a passport. More information can be found on <a href="https://www.votespa.com/">VotePA.</a></p>
+            </div>
+
+            <div class="voting-feature">
+                <h2>Election Protection</h2>
+                <p>If you experience issues while voting, contact the Election Protection Hotline at 1-866-OUR-VOTE for assistance, or reach out to the <a href="https://www.votespa.com/">Pennsylvania Department of State</a>.</p>
+            </div>
+
+            <div class="voting-feature">
+                <h2>Voter Education Resources</h2>
+                <p>Stay informed about Pennsylvania's voting process and issues through organizations like <a href="https://www.pennsylvania.gov/education/">Pennsylvania's official website</a> and local civic groups.</p>
+            </div>
+
+            <div class="voting-feature">
+                <h2>Get Involved</h2>
+                <p>Learn how you can volunteer for voter registration drives, assist others with the voting process, or become a poll worker in your community. Visit <a href="https://www.votespa.com/">VotePA</a> for more information.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Civic Connect</title>
+    <link rel="stylesheet" href="accounts.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+        <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 1.5em;
+}
+
+
+    </style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="county/county.html">County Government</a></li>
+                <li><a href="state/state.html">State Government</a></li>
+                <li><a href="federal/federal.html">Federal Government</a></li>
+                <li><a href="voting/voting.html">Voting</a></li>
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-section">
+            <div class="profile-card">
+                <img src="graphics/rando.jfif" alt="Profile Picture" class="profile-pic">
+                <h1>Welcome, <span id="user-fullname">User</span>!</h1>
+                <p>This is your profile page where you can access personalized civic resources.</p>
+                <a href="voting/resources.html" class="cta-button">Explore Voting Resources</a><br>
+                <button id="signout-button" class="cta-button">Sign Out</button>
+            </div>
+
+            <div class="additional-info">
+                <h2>Your Civic Engagement</h2>
+                <div class="info-card">
+                    <h3>Community Involvement</h3>
+                    <p>Volunteer at Local Food Bank</p>
+                </div>
+                <div class="info-card">
+                    <h3>Upcoming Events</h3>
+                    <p>Community Clean-Up Day on March 15th, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>Your Stats</h2>
+            <div id="map" style="height: 300px;"></div>
+            <div class="scrollable-box">
+                <div id="local-rep" class="info-card">
+                    <h3 id="local-rep-title">Your Local Reps</h3>
+                    <p id="local-rep-details">Fetching your local representatives...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Last Voted</h3>
+                    <p id="last-voted">Fetching last voted date...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Profile Created On</h3>
+                    <p id="profile-created">Fetching profile creation date...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Next Local Meeting</h3>
+                    <p>Bucks County Commissioners Meeting on October 16 at 10:30 AM</p>
+                </div>
+                <div class="info-card">
+                    <h3>Current Civic Issues</h3>
+                    <p>Addressing local housing initiatives.</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const userData = docSnap.data();
+            document.getElementById('user-fullname').innerText = userData.full_name;
+            document.getElementById('last-voted').innerText = userData.last_voted;
+
+            // Fetch and display profile creation date
+            const creationTime = user.metadata.creationTime;
+    const creationDate = new Date(creationTime);
+
+
+    const formattedDate = creationDate.toISOString().split('T')[0];
+    document.getElementById('profile-created').innerText = formattedDate;
+
+
+            // Show profile link and hide signup/login
+            document.getElementById('signup-link').style.display = 'none';
+            document.getElementById('auth-link').innerText = 'Profile';
+            document.getElementById('auth-link').setAttribute('href', 'profile.html');
+        } else {
+            console.error("No user data found.");
+        }
+    } else {
+        // Show signup and login links
+        document.getElementById('signup-link').style.display = 'block';
+        document.getElementById('auth-link').innerText = 'Login';
+        document.getElementById('auth-link').setAttribute('href', 'login.html');
+    }
+});
+
+
+        // Define signOut function here
+        function signOut() {
+            auth.signOut().then(() => {
+                // Reset UI after sign out
+                document.getElementById('signup-link').style.display = 'block';
+                document.getElementById('auth-link').innerText = 'Login';
+                document.getElementById('auth-link').setAttribute('href', 'login.html');
+                
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Attach event listener to the sign out button
+        document.getElementById('signout-button').addEventListener('click', signOut);
+
+        // Initialize the map
+        const map = L.map('map').setView([37.7749, -122.4194], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+
+        function success(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            map.setView([lat, lon], 13);
+            L.marker([lat, lon]).addTo(map).bindPopup("You are here").openPopup();
+            fetchLocalRepresentatives(lat, lon);
+        }
+
+        function error() {
+            alert("Unable to retrieve your location.");
+        }
+
+        function fetchLocalRepresentatives(lat, lon) {
+            const representatives = {
+                city: "Yardley, PA",
+                stateRep: "Representative Perry S. Warren",
+                federalRep: "Representative Brian Fitzpatrick"
+            };
+
+            document.getElementById("local-rep-title").innerText = `Your Local Representatives in ${representatives.city}:`;
+            document.getElementById("local-rep-details").innerHTML = `
+                State Representative: ${representatives.stateRep}<br>
+                Federal Representative: ${representatives.federalRep}
+            `;
+        }
+    </script>
+</body>
+</html>

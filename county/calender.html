@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Bucks County</title>
+    <link rel="stylesheet" href="../index.css"> <!-- General styles -->
+    <link rel="stylesheet" href="county.css"> <!-- Specific styles for county -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    // September events
+                    {
+                        title: 'Agricultural Land Preservation Board Meeting',
+                        start: '2024-09-05T19:30:00',
+                        end: '2024-09-05T20:30:00',
+                        description: 'Location: The Almshouse'
+                    },
+                    {
+                        title: 'Board of Elections Meeting',
+                        start: '2024-09-10T11:30:00',
+                        end: '2024-09-10T12:30:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Prison Oversight Board Meeting',
+                        start: '2024-09-11T13:30:00',
+                        end: '2024-09-11T14:30:00',
+                        description: 'Location: Bucks County Administration Building, Room 110A'
+                    },
+                    {
+                        title: 'Retirement Board Meeting',
+                        start: '2024-09-18T09:30:00',
+                        end: '2024-09-18T10:00:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Commissioners Meeting',
+                        start: '2024-09-18T10:30:00',
+                        end: '2024-09-18T11:30:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Bucks County Planning Commission Board Meeting',
+                        start: '2024-09-04T14:00:00',
+                        end: '2024-09-04T15:00:00',
+                        description: 'Location: The Almshouse'
+                    },
+                    {
+                        title: 'Senior Fair',
+                        start: '2024-09-06T13:00:00',
+                        end: '2024-09-06T15:00:00',
+                        description: 'Location: Central Bucks Senior Activity Center'
+                    },
+                    {
+                        title: 'Job Fair & WOW Ribbon Cutting',
+                        start: '2024-09-10T10:00:00',
+                        end: '2024-09-10T15:00:00'
+                    },
+                    {
+                        title: 'Job Fair & Community Resource Expo',
+                        start: '2024-09-12T09:30:00',
+                        end: '2024-09-12T12:00:00',
+                        description: 'Location: Quakertown Library'
+                    },
+                    {
+                        title: 'Bucks County Housing Group',
+                        start: '2024-09-18T11:00:00',
+                        end: '2024-09-18T14:00:00'
+                    },
+                    {
+                        title: 'NOVA 2nd Annual Upstander Day',
+                        start: '2024-09-29T11:00:00',
+                        end: '2024-09-29T15:00:00'
+                    },
+                    // October events
+                    {
+                        title: 'Agricultural Land Preservation Board Meeting',
+                        start: '2024-10-03T19:30:00',
+                        end: '2024-10-03T20:30:00',
+                        description: 'Location: The Almshouse'
+                    },
+                    {
+                        title: 'Early Intervention SICC Meet & Greet',
+                        start: '2024-10-10T11:30:00',
+                        description: 'Early Intervention SICC Meet & Greet - Oct. 10th'
+                    },
+                    {
+                        title: 'Early Intervention BCICC General Business Meeting',
+                        start: '2024-10-15T11:00:00',
+                        description: 'Early Intervention BCICC General Business Meeting - Oct 15th'
+                    },
+                    {
+                        title: 'Early Intervention Parent Cafe (online)',
+                        start: '2024-10-15T18:00:00',
+                        description: 'Online event - Oct 15'
+                    },
+                    {
+                        title: 'Online Lunch & Learn Session',
+                        start: '2024-10-29T12:00:00',
+                        end: '2024-10-29T13:00:00',
+                        description: 'Early Intervention Resources for Families'
+                    },
+                    {
+                        title: 'Salary Board Meeting',
+                        start: '2024-10-02T09:30:00',
+                        end: '2024-10-02T10:00:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Commissioners Meeting',
+                        start: '2024-10-02T10:30:00',
+                        end: '2024-10-02T11:30:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Prison Oversight Board Meeting',
+                        start: '2024-10-09T13:30:00',
+                        end: '2024-10-09T14:30:00',
+                        description: 'Location: Bucks County Administration Building, Room 110A'
+                    },
+                    {
+                        title: 'Retirement Board Meeting',
+                        start: '2024-10-16T09:30:00',
+                        end: '2024-10-16T10:00:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Commissioners Meeting',
+                        start: '2024-10-16T10:30:00',
+                        end: '2024-10-16T11:30:00',
+                        description: 'Location: Bucks County Administration Building'
+                    },
+                    {
+                        title: 'Tinicum Players 1890s Decades Club Event',
+                        start: '2024-10-17T17:00:00',
+                        end: '2024-10-17T21:00:00',
+                        description: 'Location: Erwin Stover House'
+                    },
+                    {
+                        title: 'Parks and Recreation Board Meeting',
+                        start: '2024-10-23T10:00:00',
+                        end: '2024-10-23T11:00:00',
+                        description: 'Location: Churchville Nature Center'
+                    },
+                    {
+                        title: 'Bucks County Planning Commission Board Meeting',
+                        start: '2024-10-01T14:00:00',
+                        end: '2024-10-01T15:00:00',
+                        description: 'Location: The Almshouse'
+                    },
+                    {
+                        title: 'Bucks County Solid Waste Advisory Committee',
+                        start: '2024-10-10T14:00:00',
+                        description: 'Location: The Almshouse'
+                    },
+                    {
+                        title: 'Bucks County Correctional Facility',
+                        start: '2024-10-01T14:30:00',
+                        end: '2024-10-01T16:30:00'
+                    },
+                    {
+                        title: 'WOW at Livengrin',
+                        start: '2024-10-03T13:00:00',
+                        end: '2024-10-03T16:00:00'
+                    },
+                    {
+                        title: 'WOW Video Shoot',
+                        start: '2024-10-04T14:00:00',
+                        end: '2024-10-04T16:00:00'
+                    },
+                    {
+                        title: 'Bucks County Justice Center',
+                        start: '2024-10-17T10:00:00',
+                        end: '2024-10-17T15:30:00',
+                        description: 'Location: Bucks County Justice Center'
+                    },
+                    {
+                        title: 'Delaware Valley Veterans Expo',
+                        start: '2024-10-18T10:30:00',
+                        end: '2024-10-18T16:00:00'
+                    },
+                    {
+                        title: 'Delaware Valley CSBD Recruitment Tuesday',
+                        start: '2024-10-22T11:00:00',
+                        end: '2024-10-22T13:00:00',
+                        description: 'Come see WOW!'
+                    },
+                    {
+                        title: 'Senator Steve Santarsiero Career Event',
+                        start: '2024-10-23T10:00:00',
+                        end: '2024-10-23T14:00:00',
+                        description: 'Location: Bristol Township Municipal Building'
+                    }
+                ],
+                eventClick: function(info) {
+                    alert(info.event.title + "\n" + (info.event.extendedProps.description || ''));
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="county.html">County Government</a></li>
+                <li><a href="../county/meeting-schedules.html">Meeting Schedules</a></li>
+                <li><a href="../county/calender.html">Calendar</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Calendar</h1>
+        <div id="calendar"></div> <!-- This div is crucial for rendering the calendar -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

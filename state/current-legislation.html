@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Legislation - Pennsylvania</title>
+    <link rel="stylesheet" href="../index.css"> <!-- Common styles -->
+    <link rel="stylesheet" href="state.css"> <!-- Specific CSS for legislation page -->
+</head>
+<body>
+    <style>
+        body {
+    overflow: hidden;
+}
+</style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="state.html">State Government</a></li>
+                <li><a href="../state/upcoming-meetings.html">Upcoming Meetings</a></li>
+                <li><a href="../state/current-legislation.html">Current Legislation</a></li>
+                <li><a href="../state/calender.html">Calender</a></li>
+                <li id="signup-link"><a href="../signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="../login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Upcoming Legislation</h1>
+        <section class="state-section">
+            <div class="state-feature">
+                <h2>HB 2595</h2>
+                <p><strong>Short Title:</strong> This bill aims to create a program focused on developing a robust workforce for nursing assistants, addressing the growing demand in healthcare.</p>
+                <p><strong>Actions:</strong> Currently under review by the Labor and Industry Committee, as of September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HB 2597</h2>
+                <p><strong>Short Title:</strong> This legislation proposes changes to the Public School Code to incorporate health centers within schools, ensuring students have access to vital health services.</p>
+                <p><strong>Actions:</strong> This bill has been sent to the Health Committee for consideration, as of September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HB 2601</h2>
+                <p><strong>Short Title:</strong> This act focuses on legislative redistricting and aims to include incarcerated individuals in population counts, promoting fair representation.</p>
+                <p><strong>Actions:</strong> Referred to the State Government Committee for further evaluation on September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HB 2604</h2>
+                <p><strong>Short Title:</strong> This bill establishes the Emerging Psychologists Workforce Initiative, supporting the growth and training of future psychologists to meet community needs.</p>
+                <p><strong>Actions:</strong> Currently with the Health Committee for review as of September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HR 543</h2>
+                <p><strong>Short Title:</strong> This resolution proclaims October 2024 as "Liver Disease Awareness Month," aiming to raise awareness and educate the public about liver health.</p>
+                <p><strong>Actions:</strong> Under consideration by the Health Committee since September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HR 544</h2>
+                <p><strong>Short Title:</strong> This resolution recognizes November 11, 2024, as "Veterans Day" in Pennsylvania, honoring the service and sacrifices of veterans.</p>
+                <p><strong>Actions:</strong> Currently in the Veterans Affairs and Emergency Preparedness Committee for review, as of September 30, 2024.</p>
+            </div>
+
+            <div class="state-feature">
+                <h2>HR 545</h2>
+                <p><strong>Short Title:</strong> This resolution acknowledges October 9, 2024, as "Ageism Awareness Day" in Pennsylvania, encouraging discussions about ageism and promoting respect for older adults.</p>
+                <p><strong>Actions:</strong> Referred to the Aging and Older Adult Services Committee for consideration since September 30, 2024.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="legislation.js"></script> <!-- Specific JS for legislation page -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Profile'; // Change Login to Profile
+                    authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+                }
+            } else {
+                // User is signed out, keep links as is
+                document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+                const authLink = document.getElementById('auth-link');
+                if (authLink) {
+                    authLink.innerText = 'Login'; // Ensure it says Login
+                    authLink.setAttribute('href', '../login.html'); // Set href to login page
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

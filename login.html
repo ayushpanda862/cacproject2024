@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Civic Connect</title>
+    <link rel="stylesheet" href="accounts.css"> <!-- Updated path -->
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 1.5em;
+}
+
+
+    </style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="county/county.html">County Government</a></li>
+                <li><a href="state/state.html">State Government</a></li>
+                <li><a href="federal/federal.html">Federal Government</a></li>
+                <li><a href="voting/voting.html">Voting</a></li>
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-form">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit" class="save-button">Log In</button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+  authDomain: "cacproject-412d8.firebaseapp.com",
+  projectId: "cacproject-412d8",
+  storageBucket: "cacproject-412d8.appspot.com",
+  messagingSenderId: "699289559511",
+  appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+};
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+      
+        // Login event
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+      
+            try {
+                // Sign in with email and password
+                const userCredential = await signInWithEmailAndPassword(auth, username, password);
+                const user = userCredential.user;
+      
+                // Fetch user data from Firestore
+                const docRef = doc(db, 'users', user.uid);
+                const docSnap = await getDoc(docRef);
+
+                window.location.href = 'profile.html';
+
+      
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    localStorage.setItem('username', user.email);
+                    localStorage.setItem('fullName', userData.full_name);
+                    localStorage.setItem('lastVoted', userData.last_voted);
+                    localStorage.setItem('loggedIn', 'true');
+                    window.location.href = 'profile.html';
+                } else {
+                    document.getElementById('error-message').innerText = "No user data found.";
+                }
+            } catch (error) {
+                console.error('Error signing in:', error);
+                document.getElementById('error-message').innerText = "Invalid username or password. Please try again.";
+            }
+        });
+
+    // Check authentication state on page load
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in
+            document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                authLink.innerText = 'Profile'; // Change Login to Profile
+                authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+            }
+        } else {
+            // User is signed out, keep links as is
+            document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                authLink.innerText = 'Login'; // Ensure it says Login
+                authLink.setAttribute('href', 'login.html'); // Set href to login page
+            }
+        }
+    });
+
+      </script>
+      
+    
+    
+    
+</body>
+</html>

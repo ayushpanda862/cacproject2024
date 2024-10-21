@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Civic Connect</title>
+    <link rel="stylesheet" href="index.css"> <!-- Use the same CSS file -->
+    <link rel="stylesheet" href="accounts.css"> <!-- Use the same CSS file -->
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 1.5em;
+}
+
+
+    </style>
+    <header>
+        <div class="logo">Civic Connect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="county/county.html">County Government</a></li>
+                <li><a href="state/state.html">State Government</a></li>
+                <li><a href="federal/federal.html">Federal Government</a></li>
+                <li><a href="voting/voting.html">Voting</a></li>
+                <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+                <li id="login-link"><a href="login.html" id="auth-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-form">
+            <h1>Sign Up</h1>
+            <form id="signupForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" required>
+                <label for="lastVoted">Last Day Voted:</label>
+                <input type="date" id="lastVoted" required>
+                <button type="submit" class="save-button">Sign Up</button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Civic Connect. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+            authDomain: "cacproject-412d8.firebaseapp.com",
+            projectId: "cacproject-412d8",
+            storageBucket: "cacproject-412d8.appspot.com",
+            messagingSenderId: "699289559511",
+            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Signup event
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const fullName = document.getElementById('fullName').value;
+            const lastVoted = document.getElementById('lastVoted').value;
+
+            try {
+                // Create user with email and password
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Add user data to Firestore
+                await setDoc(doc(db, 'users', user.uid), {
+                    full_name: fullName,
+                    last_voted: lastVoted
+                });
+
+                // Redirect to profile page or login
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Error signing up:', error);
+                document.getElementById('error-message').innerText = error.message;
+            }
+        });
+
+    // Check authentication state on page load
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in
+            document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                authLink.innerText = 'Profile'; // Change Login to Profile
+                authLink.setAttribute('href', 'profile.html'); // Set href to profile page
+            }
+        } else {
+            // User is signed out, keep links as is
+            document.getElementById('signup-link').style.display = 'block'; // Ensure Sign Up is visible
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                authLink.innerText = 'Login'; // Ensure it says Login
+                authLink.setAttribute('href', 'login.html'); // Set href to login page
+            }
+        }
+    });
+
+    </script>
+</body>
+</html>
