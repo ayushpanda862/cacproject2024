@@ -104,16 +104,7 @@ header {
                 </div>
             </section>
 
-            <section class="features-section">
-                <h2 class="section-heading">Test Your Civics Knowledge!</h2>
-                <div class="features">
-                    <div class="feature" style="flex: 1;">
-                        <p>Think you know your civics? Take the quiz to find out!</p>
-                        <button id="start-quiz" class="feature-button">Start Quiz</button>
-                    </div>
-                </div>
-            </section>
-            
+    
         
     </main>
 
@@ -158,97 +149,7 @@ header {
                 }
             }
         });
-        const questions = [
-    { question: "What is the supreme law of the land?", answers: { a: "The Constitution", b: "The Declaration of Independence", c: "The Bill of Rights" }, correct: "a" },
-    { question: "What do we call the first ten amendments to the Constitution?", answers: { a: "The Articles of Confederation", b: "The Bill of Rights", c: "The Preamble" }, correct: "b" },
-    { question: "Who is in charge of the executive branch?", answers: { a: "The Chief Justice", b: "The President", c: "The Speaker of the House" }, correct: "b" },
-    { question: "What is a right guaranteed by the First Amendment?", answers: { a: "Freedom of Speech", b: "Right to Bear Arms", c: "Right to a Fair Trial" }, correct: "a" },
-    { question: "How many justices are on the Supreme Court?", answers: { a: "Nine", b: "Seven", c: "Eleven" }, correct: "a" },
-    { question: "Who wrote the Declaration of Independence?", answers: { a: "George Washington", b: "Thomas Jefferson", c: "Benjamin Franklin" }, correct: "b" },
-    { question: "What are the two parts of the U.S. Congress?", answers: { a: "The House of Representatives and the Senate", b: "The Upper Chamber and Lower Chamber", c: "The Convention and the Assembly" }, correct: "a" },
-    { question: "What is the economic system in the United States?", answers: { a: "Capitalist economy", b: "Communist economy", c: "Socialist economy" }, correct: "a" },
-    { question: "Name one U.S. territory.", answers: { a: "Puerto Rico", b: "Cuba", c: "Alaska" }, correct: "a" },
-    { question: "What movement tried to end racial discrimination?", answers: { a: "Civil Rights Movement", b: "Suffrage Movement", c: "Labor Movement" }, correct: "a" }
-];
-
-        
-        let currentQuestionIndex = 0;
-        let score = 0;
-        
-        const startQuizButton = document.getElementById("start-quiz");
-        const quizModal = document.getElementById("quiz-modal");
-        const quizContainer = document.getElementById("quiz-container");
-        const nextButton = document.getElementById("next-button");
-        const restartButton = document.getElementById("restart-button");
-        const resultText = document.getElementById("result");
-        const closeButton = document.querySelector(".close-button");
-        
-        startQuizButton.addEventListener("click", startQuiz);
-        nextButton.addEventListener("click", checkAnswer);
-        restartButton.addEventListener("click", restartQuiz);
-        closeButton.addEventListener("click", closeModal);
-        
-        function startQuiz() {
-            startQuizButton.style.display = "none";
-            quizModal.style.display = "flex";
-            currentQuestionIndex = 0;
-            score = 0;  // Reset score
-            showQuestion();
-        }
-        
-        function showQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            quizContainer.innerHTML = `
-                <p>${currentQuestion.question}</p>
-                <div>
-                    ${Object.keys(currentQuestion.answers).map(key => `
-                        <label>
-                            <input type="radio" name="answer" value="${key}"> ${currentQuestion.answers[key]}
-                        </label><br>
-                    `).join('')}
-                </div>
-            `;
-            nextButton.style.display = "none"; // Hide Next button until an answer is selected
-        }
-        
-        quizContainer.addEventListener("change", function() {
-            nextButton.style.display = "block"; // Show Next button when an answer is selected
-        });
-        
-        function checkAnswer() {
-            const selectedAnswer = quizContainer.querySelector('input[type="radio"]:checked');
-            if (selectedAnswer) {
-                if (selectedAnswer.value === questions[currentQuestionIndex].correct) {
-                    score++;
-                }
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    showQuestion();
-                } else {
-                    showResult();
-                }
-            }
-        }
-        
-        function showResult() {
-            quizContainer.innerHTML = ""; // Clear quiz container
-            resultText.style.display = "block";
-            resultText.innerText = `You scored ${score} out of ${questions.length}`;
-            nextButton.style.display = "none";
-            restartButton.style.display = "block";
-        }
-        
-        function restartQuiz() {
-            resultText.style.display = "none";
-            restartButton.style.display = "none";
-            startQuizButton.style.display = "block";
-            quizModal.style.display = "none";
-        }
-        
-        function closeModal() {
-            quizModal.style.display = "none";
-            restartQuiz();
-        }
+     
 
     </script>
     
