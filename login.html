@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Civic Connect</title>
     <link rel="stylesheet" href="accounts.css"> <!-- Updated path -->
+    
+    
+    
 </head>
 <body>
     <style>
@@ -65,64 +68,28 @@ header {
     <footer>
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
-
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+        // Import the necessary Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
       
-        // Your web app's Firebase configuration
+        // Your Firebase configuration
         const firebaseConfig = {
-  apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
-  authDomain: "cacproject-412d8.firebaseapp.com",
-  projectId: "cacproject-412d8",
-  storageBucket: "cacproject-412d8.appspot.com",
-  messagingSenderId: "699289559511",
-  appId: "1:699289559511:web:e6716f05cd2805562f6b92"
-};
+          apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+          authDomain: "cacproject-412d8.firebaseapp.com",
+          projectId: "cacproject-412d8",
+          storageBucket: "cacproject-412d8.firebasestorage.app",
+          messagingSenderId: "699289559511",
+          appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+        };
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
       
-        // Login event
-        document.getElementById('loginForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-      
-            try {
-                // Sign in with email and password
-                const userCredential = await signInWithEmailAndPassword(auth, username, password);
-                const user = userCredential.user;
-      
-                // Fetch user data from Firestore
-                const docRef = doc(db, 'users', user.uid);
-                const docSnap = await getDoc(docRef);
-
-                window.location.href = 'profile.html';
-
-      
-                if (docSnap.exists()) {
-                    const userData = docSnap.data();
-                    localStorage.setItem('username', user.email);
-                    localStorage.setItem('fullName', userData.full_name);
-                    localStorage.setItem('lastVoted', userData.last_voted);
-                    localStorage.setItem('loggedIn', 'true');
-                    window.location.href = 'profile.html';
-                } else {
-                    document.getElementById('error-message').innerText = "No user data found.";
-                }
-            } catch (error) {
-                console.error('Error signing in:', error);
-                document.getElementById('error-message').innerText = "Invalid username or password. Please try again.";
-            }
-        });
-
-    // Check authentication state on page load
-    onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
         if (user) {
             // User is signed in
             document.getElementById('signup-link').style.display = 'none'; // Hide Sign Up link
@@ -142,10 +109,38 @@ header {
         }
     });
 
+        // Login form event listener
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+          event.preventDefault();
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+      
+          try {
+            // Sign in with email and password
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+            const user = userCredential.user;
+      
+            // Fetch user data from Firestore
+            const docRef = doc(db, 'users', user.uid);
+            const docSnap = await getDoc(docRef);
+      
+            if (docSnap.exists()) {
+              const userData = docSnap.data();
+              localStorage.setItem('username', user.email);
+              localStorage.setItem('fullName', userData.full_name);
+              localStorage.setItem('lastVoted', userData.last_voted);
+              localStorage.setItem('loggedIn', 'true');
+              window.location.href = 'profile.html'; // Redirect to profile page
+            } else {
+              document.getElementById('error-message').innerText = "No user data found.";
+            }
+          } catch (error) {
+            console.error('Error signing in:', error);
+            document.getElementById('error-message').innerText = "Invalid username or password. Please try again.";
+          }
+        });
       </script>
       
-    
-    
     
 </body>
 </html>

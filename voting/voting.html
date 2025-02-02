@@ -100,46 +100,51 @@
         <section class="voting-section">
             <div class="voting-feature">
                 <h3>Bucks County</h3>
-                <p>The next election in Bucks County is scheduled for November 5, 2024. Voters should ensure they are registered and ready to participate in local races and ballot measures. For more information on candidates and issues, visit the Bucks County Board of Elections website.</p>
+                <p>The next election in Bucks County is scheduled for <strong>November 4, 2025</strong>. Voters should ensure they are registered and ready to participate in local races and ballot measures. For more information on candidates and issues, visit the Bucks County Board of Elections website.</p>
             </div>
             <div class="voting-feature">
                 <h3>Pennsylvania</h3>
-                <p>In Pennsylvania, the next statewide election will also be held on November 5, 2024. Voters can prepare by checking their registration status and familiarizing themselves with the candidates and policies that will be voted on. Stay updated with the Pennsylvania Department of State's resources.</p>
+                <p>In Pennsylvania, the next statewide election will also be held on <strong>November 3, 2026</strong>. Voters can prepare by checking their registration status and familiarizing themselves with the candidates and policies that will be voted on. Stay updated with the Pennsylvania Department of State's resources.</p>
+                <p>The 2026 election <strong>will</strong> include the election of the PA Governor.</p>
             </div>
             <div class="voting-feature">
                 <h3>Federal</h3>
-                <p>The next federal election is coming up on November 5, 2024. This includes important positions such as Congressional seats. Voters should confirm their registration and be informed about the candidates on the ballot for national offices.</p>
+                <p>The next federal election is coming up on <strong>November 3, 2026</strong>. This includes important positions such as Congressional seats. Voters should confirm their registration and be informed about the candidates on the ballot for national offices.</p>
+                <p>The 2026 election <strong>will not</strong> include the election of the U.S. President.</p>
             </div>
             <div class="voting-feature countdown" style="grid-column: span 2; text-align: center;">
                 <h3>Countdown to Next Election</h3>
                 <div class="countdown-timer" id="countdown-timer">
                     <div class="countdown-item">
+                        <span id="months">0</span>
+                        <p id="months-label">Months</p> 
+                    </div>
+                    <div class="countdown-item">
+                        <span id="Weeks">0</span>
+                        <p id="Weeks-label">Weeks</p> 
+                    </div>
+                    <div class="countdown-item">
                         <span id="days">0</span>
-                        <p>Days</p>
+                        <p id="days-label">Days</p>                    
                     </div>
                     <div class="countdown-item">
                         <span id="hours">0</span>
-                        <p>Hours</p>
+                        <p id="hours-label">Hours</p> 
                     </div>
                     <div class="countdown-item">
                         <span id="minutes">0</span>
-                        <p>Minutes</p>
+                        <p id="minutes-label">Minutes</p> 
                     </div>
                     <div class="countdown-item">
                         <span id="seconds">0</span>
-                        <p>Seconds</p>
+                        <p id="seconds-label">Seconds</p> 
                     </div>
                 </div>
             </div>
+            
         </section>
     
-        <section class="learn-more">
-            <div class="voting-feature">
-                <h2>Learn More</h2>
-                <p>To learn more about voting government operations, visit the official government website.</p>
-                <a href="https://www.usa.gov" class="feature-button" target="_blank">Visit Voting Government Website</a>
-            </div>
-        </section>
+        
     </main>
     
 
@@ -149,16 +154,18 @@
 
     <script src="voting.js"></script> <!-- Specific JS for voting page -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-    
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+      
+        // Your Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
-            authDomain: "cacproject-412d8.firebaseapp.com",
-            projectId: "cacproject-412d8",
-            storageBucket: "cacproject-412d8.appspot.com",
-            messagingSenderId: "699289559511",
-            appId: "1:699289559511:web:e6716f05cd2805562f6b92"
+          apiKey: "AIzaSyDgm8XLTCcP0qgjDmjjtYgzgfFU51r-VCU",
+          authDomain: "cacproject-412d8.firebaseapp.com",
+          projectId: "cacproject-412d8",
+          storageBucket: "cacproject-412d8.firebasestorage.app",
+          messagingSenderId: "699289559511",
+          appId: "1:699289559511:web:e6716f05cd2805562f6b92"
         };
     
         const app = initializeApp(firebaseConfig);

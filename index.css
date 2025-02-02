@@ -2,109 +2,160 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-body {
-    font-family: 'Arial', sans-serif;
+  html {
+    font-size: 16px; /* 1rem = 16px */
+  }
+  
+  
+  body {
+    font-family: "Arial", sans-serif;
     line-height: 1.6;
     background: linear-gradient(135deg, #6a82fb, #007bff);
-    min-height: 150vh;
-}
-
-header {
-    color: white;
-    padding: 20px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-nav ul {
+    padding: 20px;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  }
+  
+  
+  nav ul {
     list-style: none;
     display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-    padding: 5px 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-
-nav a {
+    flex-wrap: wrap; /* Allow wrapping to multiple rows */
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center the navbar items */
+    gap: 20px; /* Add space between items */
+  }
+  
+  nav ul li {
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
-}
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Prevent the text from wrapping */
+  }
+  
+  nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Header adjustments for mobile view */
 
-.hero {
+  @media (max-width: 1200px) {
+    header {
+        flex-direction: column; /* Stack logo and navbar vertically on small screens */
+        align-items: center; /* Center everything horizontally */
+        text-align: center; /* Center text */
+      }
+    
+  
+    nav ul {
+      display: flex; /* Show navbar on mobile */
+      flex-wrap: wrap; /* Allow the navbar to wrap into multiple rows */
+      justify-content: center; /* Center the navbar items */
+      gap: 10px; /* Space between items */
+      width: 100%; /* Full width */
+      margin-top: 20px; /* Space between logo and navbar */
+    }
+  
+    nav ul li {
+      margin: 5px 0; /* Space between links when they stack */
+    }
+  
+    nav a {
+      padding: 15px 30px; /* Add more padding to make the links larger on mobile */
+      border-radius: 10px; /* Give buttons rounded corners */
+    }
+  }
+  
+  
+  .hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 80px 20px;
+    padding: 5vw 4vw; /* Reduced padding */
     background: linear-gradient(135deg, rgba(106, 130, 251, 0.1), rgba(0, 123, 255, 0.1));
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-}
-
-.hero-content {
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-
-.cta-button {
+  }
+  
+  .hero-content {
+    max-width: 50vw;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem; /* Use rem instead of vw for text size */
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
     background: #ff4757;
     color: white;
-    padding: 15px 30px;
+    padding: 12px 24px; /* Adjusted padding */
     border-radius: 30px;
     text-decoration: none;
     transition: background 0.3s;
-}
-
-.cta-button:hover {
+  }
+  
+  .cta-button:hover {
     background: #ff6b81;
-}
-
-.hero-graphics {
+  }
+  
+  .hero-graphics {
     flex-shrink: 0;
-}
-
-.hero-image {
-    max-width: 400px;
+  }
+  
+  .hero-image {
+    max-width: 30vw; /* Reduced max width */
     width: 100%;
     height: auto;
     position: relative;
     z-index: 1;
-}
-
-.features-section {
+  }
+  
+  .features-section {
     background: linear-gradient(135deg, rgba(0, 123, 255, 0.05), rgba(255, 255, 255, 0.1));
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 20px;
     margin: 40px 0;
-}
-
-.features {
+  }
+  
+  .features {
     display: flex;
     justify-content: space-around;
-    padding: 40px 20px;
-}
-
-.feature {
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    padding: 2vw;
+  }
+  
+  .feature {
     background-color: white;
     color: #007bff;
     padding: 20px;
@@ -112,13 +163,14 @@ nav a {
     width: 30%;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.feature p {
+    margin-bottom: 16px;
+  }
+  
+  .feature p {
     margin-bottom: 10px;
-}
-
-.feature-button {
+  }
+  
+  .feature-button {
     background: #ff4757;
     color: white;
     padding: 10px 20px;
@@ -126,32 +178,35 @@ nav a {
     text-decoration: none;
     transition: background 0.3s;
     margin-top: 10px;
-}
-
-.feature-button:hover {
+  }
+  
+  .feature-button:hover {
     background: #ff6b81;
-}
-
-.info {
+  }
+  
+  .info {
     margin: 40px 0;
     padding: 40px;
     background-color: white;
     text-align: center;
-}
-
-footer {
+  }
+  
+  footer {
     text-align: center;
     padding: 20px 0;
     background: linear-gradient(135deg, #6a82fb, #007bff);
     color: white;
-}
-
-.section-heading {
+    margin-top: auto;
+  }
+  
+  .section-heading {
     text-align: center;
     color: white;
     margin-bottom: 20px;
-    font-size: 1.8em;
-}.modal {
+    font-size: 1.8rem;
+  }
+  
+  .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -161,67 +216,133 @@ footer {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
+  }
+  
+  .modal-content {
     background: linear-gradient(135deg, #6a82fb, #007bff);
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px; /* Adjust width if needed */
+    max-width: 500px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: slideIn 0.5s;
-    display: flex; /* Use flexbox for centering */
-    flex-direction: column; /* Align children in a column */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    min-height: 200px; /* Set a minimum height for the modal */
-    position: relative; /* Allow positioning of close button */
-}
-@keyframes slideIn {
-    from { transform: translateY(-30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-.close-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    position: relative;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .close-button {
     color: #aaa;
-    position: absolute; /* Position it absolutely */
-    top: 15px; /* Distance from the top */
-    right: 15px; /* Distance from the right */
+    position: absolute;
+    top: 15px;
+    right: 15px;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-.result {
+  }
+  
+  .result {
     margin-top: 20px;
     font-size: 1.2em;
     text-align: center;
     color: #007bff;
     padding: 15px;
-    background: #e9f7fe; /* Light blue background for results */
+    background: #e9f7fe;
     border-radius: 5px;
     display: none;
-    width: 100%; /* Ensure the result box takes full width */
-}
-
-button {
-    background: #ff4757; /* Match your website's primary color */
+    width: 100%;
+  }
+  
+  button {
+    background: #ff4757;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
-    margin: 10px auto; /* Center button */
-    display: block; /* Make button a block element for centering */
-}
-
-button:hover {
+    margin: 10px auto;
+    display: block;
+  }
+  
+  button:hover {
     background: #ff6b81;
-}
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column; /* Stack hero content and image on smaller screens */
+      padding: 8vw 4vw;
+    }
+  
+    .hero-content h1 {
+      font-size: 5vw;
+    }
+  
+    .features {
+      flex-direction: column;
+      padding: 5vw;
+    }
+  
+    .feature {
+      width: 80%; /* Stack feature boxes vertically */
+      margin-bottom: 4vw;
+    }
+  
+    .cta-button {
+      padding: 1em 4vw;
+    }
+  
+    footer {
+      padding: 3vw 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 6vw;
+    }
+  
+    .hero-content p {
+      font-size: 4vw;
+    }
+  
+    .cta-button {
+      padding: 1.5em 5vw;
+    }
+  
+    .feature {
+      width: 100%; /* Full width for features on mobile */
+      margin-bottom: 6vw;
+    }
+  
+    .modal-content {
+      width: 90%;
+    }
+  
+    button {
+      padding: 1.5em 4vw;
+    }
+  }
+  
