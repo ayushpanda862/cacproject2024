@@ -12,8 +12,15 @@
         
 </style>
     <header>
-        <div class="logo">Civic Connect</div>
-        <nav>
+        <div class="nav-text">
+            <div class="logo">Civic Connect</div>
+            <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+            </div>
+        </div>        
+        <nav class="nav-hidden" onclick=toggleNav()>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="county.html">County Government</a></li>
@@ -92,7 +99,7 @@
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
 
-    <script src="meeting-schedules.js"></script> <!-- Specific JS for meeting schedules page -->
+    <script src="../script.js"></script> <!-- Specific JS for state page -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";

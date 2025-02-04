@@ -34,9 +34,16 @@ header {
 
     </style>
     <header>
+        <div class="nav-text">
         <div class="logo">Civic Connect</div>
-        <nav>
-            <ul>
+        <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+        </div>
+    </div>
+        <nav class="nav-hidden" onclick=toggleNav()>
+            <ul >
                 <li><a href="index.html">Home</a></li>
                 <li><a href="county/county.html">County Government</a></li>
                 <li><a href="state/state.html">State Government</a></li>
@@ -46,7 +53,6 @@ header {
                 <li id="login-link"><a href="file:///C:/Users/ayush/Documents/CAC%20Proj/login.html" id="auth-link">Login</a></li>
             </ul>
         </nav>
-        </nav>        
     </header>
 
     <section class="hero">

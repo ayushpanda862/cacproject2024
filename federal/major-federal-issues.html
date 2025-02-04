@@ -12,9 +12,15 @@
         
 </style>
     <header>
-        <div class="logo">Civic Connect</div>
-        <nav>
-            <ul>
+        <div class="nav-text">
+            <div class="logo">Civic Connect</div>
+            <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+            </div>
+        </div>        
+        <nav class="nav-hidden" onclick=toggleNav()>            <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="federal.html">Federal Government</a></li>
                 <li><a href="../federal/legislative-processes.html">Legislative Processes</a></li>
@@ -96,7 +102,7 @@
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
 
-    <script src="legislation.js"></script> <!-- Specific JS for federal legislation page -->
+    <script src="../script.js"></script> <!-- Specific JS for state page -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";

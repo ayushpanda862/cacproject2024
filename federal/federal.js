@@ -1,13 +1,13 @@
 const federalOfficials = [
     {
-        name: "President Joe Biden",
-        bio: "Joseph Robinette Biden, Jr. is the 46th President of the United States, previously serving 36 years in the Senate and as Vice President under Barack Obama. He focuses on rebuilding America through infrastructure investments, lowering prescription drug costs, and addressing climate change.",
-        image: "../graphics/jrp.png" // Update with actual image path
+        name: "President Donald Trump",
+        bio: "Donald Trump was re-elected as the 46th President of the United States in 2024, after previously serving as the 45th President from 2017 to 2021. His presidency is focused on policies of economic growth, deregulation, immigration reform, and strengthening American influence on the global stage.",
+        image: "../graphics/djt.png" // Update with actual image path
     },
     {
-        name: "Vice President Kamala Harris",
-        bio: "Kamala D. Harris is the first woman, first Black American, and first South Asian American Vice President, sworn in on January 20, 2021. She has a history of advocating for civil rights and social justice, and works closely with President Biden on key legislation for women's rights and public health.",
-        image: "../graphics/kh.png" // Update with actual image path
+        name: "Vice President J.D. Vance",
+        bio: "J.D. Vance serves as Vice President of the United States under President Trump, having been selected as Trump’s running mate in the 2024 election. Prior to becoming VP, Vance was a U.S. Senator for Ohio, bringing his background in law, business, and advocacy for the working class to his new role.",
+        image: "../graphics/jdv.png" // Update with actual image path
     },
     {
         name: "Representative Brian Fitzpatrick",
@@ -15,9 +15,14 @@ const federalOfficials = [
         image: "../graphics/bf.jpg"
     },
     {
-        name: "Senator Bob Casey",
-        bio: "Bob Casey has been a U.S. Senator since 2007, advocating for working families, education, and healthcare, and addressing the needs of Pennsylvania residents.",
-        image: "../graphics/bc.jpg"
+        name: "Senior Senator John Fetterman",
+        bio: "John Fetterman has been serving as Pennsylvania's U.S. Senator since 2023, focusing on issues such as economic opportunity, healthcare access, and social justice, while fighting for the people of his home state.",
+        image: "../graphics/jf.jpg"
+    },
+    {
+        name: "Junior Senator Dave McCormick",
+        bio: "Dave McCormick has been serving as Pennsylvania’s U.S. Senator since 2025, bringing his expertise in business and economic policy to the Senate. Focused on creating jobs, lowering taxes, and strengthening national security, McCormick is committed to advancing the interests of Pennsylvania’s families and communities.",
+        image: "../graphics/dmc.jpg"
     }
 ];
 

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Civic Connect</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="accounts.css"> <!-- Updated path -->
-    
-    
     
 </head>
 <body>
@@ -37,9 +36,15 @@ header {
 
     </style>
     <header>
-        <div class="logo">Civic Connect</div>
-        <nav>
-            <ul>
+        <div class="nav-text">
+            <div class="logo">Civic Connect</div>
+            <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+            </div>
+        </div>        
+        <nav class="nav-hidden" onclick=toggleNav()>            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="county/county.html">County Government</a></li>
                 <li><a href="state/state.html">State Government</a></li>
@@ -68,6 +73,8 @@ header {
     <footer>
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
+    <script src="script.js"></script> <!-- Specific JS for state page -->
+
     <script type="module">
         // Import the necessary Firebase functions
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";

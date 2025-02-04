@@ -25,7 +25,7 @@
     padding: 20px;
     position: relative;
     z-index: 1000;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: nowrap;
   }
   
   
@@ -59,24 +59,41 @@
     background-color: rgba(255, 255, 255, 0.2);
   }
   
-  /* Header adjustments for mobile view */
+  #nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    margin-top: 10px;
+    align-items: flex-end;
+  }
+
+  #nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    margin: .5vh;
+    align-items: flex-end;
+
+  }
 
   @media (max-width: 1200px) {
     header {
         flex-direction: column; /* Stack logo and navbar vertically on small screens */
         align-items: center; /* Center everything horizontally */
         text-align: center; /* Center text */
+        flex-wrap: nowrap;
       }
     
-  
-    nav ul {
-      display: flex; /* Show navbar on mobile */
-      flex-wrap: wrap; /* Allow the navbar to wrap into multiple rows */
-      justify-content: center; /* Center the navbar items */
-      gap: 10px; /* Space between items */
-      width: 100%; /* Full width */
-      margin-top: 20px; /* Space between logo and navbar */
-    }
+      .nav-text {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+      .logo {
+        margin-right: auto;
+      }
   
     nav ul li {
       margin: 5px 0; /* Space between links when they stack */
@@ -86,9 +103,29 @@
       padding: 15px 30px; /* Add more padding to make the links larger on mobile */
       border-radius: 10px; /* Give buttons rounded corners */
     }
+
+    #nav-toggle {
+      display: block;  /* Show the toggle */
+      align-self: center;
+      align-items: flex-end;
+      margin: 0px;
+    }
+
+    .nav-hidden {
+      display: none;
+    }
+
+    .nav-ul-visible {
+      list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to multiple rows */
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center the navbar items */
+    }
   }
   
-  
+ 
   .hero {
     display: flex;
     justify-content: space-between;

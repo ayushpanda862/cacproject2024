@@ -24,29 +24,6 @@ header {
   align-items: center;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-}
-
-nav ul li {
-  margin-left: 20px;
-  padding: 5px 10px; /* Add some padding for better spacing */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-  border-radius: 5px; /* Slightly rounded corners */
-  transition: border-color 0.3s; /* Smooth transition for hover effect */
-}
-
-nav ul li:hover {
-  border-color: rgba(255, 255, 255, 0.6); /* Darker border on hover */
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
 /* Styles for login page */
 .login-container {
   display: flex;

@@ -9,8 +9,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">Civic Connect</div>
-        <nav>
+        <div class="nav-text">
+            <div class="logo">Civic Connect</div>
+            <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+            </div>
+        </div>        
+        <nav class="nav-hidden" onclick=toggleNav()>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="federal.html">Federal Government</a></li>
@@ -34,10 +41,10 @@
                 <h2>Meet the leadership of the United States</h2>
                 <div class="official-list">
                     <div class="official" onclick="showPopup(1)">
-                        <h3>President Joe Biden</h3>
+                        <h3>President Donald Trump</h3>
                     </div>
                     <div class="official" onclick="showPopup(2)">
-                        <h3>Vice President Kamala Harris</h3>
+                        <h3>Vice President J.D. Vance</h3>
                     </div>
                 </div>
             </div>
@@ -49,7 +56,10 @@
                         <h3>Representative Brian Fitzpatrick</h3>
                     </div>
                     <div class="official" onclick="showPopup(4)">
-                        <h3>Senator Bob Casey</h3>
+                        <h3>Senator John Fetterman</h3>
+                    </div>
+                    <div class="official" onclick="showPopup(5)">
+                        <h3>Senator Dave McCormick</h3>
                     </div>
                 </div>
             </div>
@@ -165,7 +175,7 @@
     <footer>
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
-
+    <script src="../script.js"></script> <!-- Specific JS for state page -->
     <script src="federal.js"></script> <!-- Specific JS for federal page -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";

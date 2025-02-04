@@ -9,8 +9,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">Civic Connect</div>
-        <nav>
+        <div class="nav-text">
+            <div class="logo">Civic Connect</div>
+            <div id="nav-toggle" class="hamburger nav-toggle" onclick=toggleNav()>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+                <span class="toggle-icon"></span>
+            </div>
+        </div>
+        <nav class="nav-hidden" onclick=toggleNav()>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="state.html">State Government</a></li>
@@ -165,7 +172,7 @@
     <footer>
         <p>&copy; 2024 Civic Connect. All rights reserved.</p>
     </footer>
-
+    <script src="../script.js"></script> <!-- Specific JS for state page -->
     <script src="state.js"></script> <!-- Specific JS for state page -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
