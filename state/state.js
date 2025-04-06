@@ -6,7 +6,7 @@ const stateOfficials = [
     },
     {
         name: "Lieutenant Governor Austin A. Davis",
-        bio: "Austin A. Davis is the youngest and first Black lieutenant governor in Pennsylvania's history. Growing up in McKeesport, he was motivated by his parents' hard work to engage in community service from a young age. As lieutenant governor, he focuses on tackling gun violence, supporting minority-owned businesses, and advocating for underrepresented communities. Austin lives in Allegheny County with his wife, Blayre, and their daughter, Harper.",
+        bio: "Austin A. Davis is the youngest and first Black lieutenant governor in Pennsylvania's history. Growing up in McKeesport, he was motivated by his parents' hard work to engage in community service from a young age. As lieutenant governor, he focuses on tackling gun violence, supporting minority-owned businesses, and advocating for underrepresented communities. Austin lives in Allegheny County with his wife and daughter",
         image: "../graphics/aad.jfif" // Update with actual image path
     },
     {
