@@ -1,7 +1,7 @@
 const federalOfficials = [
     {
         name: "President Donald Trump",
-        bio: "Donald Trump was re-elected as the 46th President of the United States in 2024, after previously serving as the 45th President from 2017 to 2021. His presidency is focused on policies of economic growth, deregulation, immigration reform, and strengthening American influence on the global stage.",
+        bio: "Donald Trump was re-elected as the 47th President of the United States in 2024, after previously serving as the 45th President from 2017 to 2021. His presidency is focused on policies of economic growth, deregulation, immigration reform, and strengthening American influence on the global stage.",
         image: "../graphics/djt.png" // Update with actual image path
     },
     {
