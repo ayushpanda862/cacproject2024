@@ -123,7 +123,7 @@ input {
 }
 
 .additional-info {
-  background: #f9f9f9; /* Light background for additional info */
+  background: white; /* Light background for additional info */
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -155,13 +155,9 @@ input {
 .stats-section {
   width: 50%; /* Right half of the page */
   padding: 20px;
-  background: #ffffff; /* Background color for stats section */
+  background: #f4f4f4; /* Background color for stats section */
   display: flex;
   flex-direction: column;
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-  margin-top: 20px; /* Space above the stats section */
-  margin-bottom: 20px; /* Space below the stats section */
 }
 
 .stats-section h2 {
@@ -204,5 +200,5 @@ footer {
   padding: 10px; /* Padding inside the scrollable box */
   border: 1px solid #ddd; /* Optional: border for distinction */
   border-radius: 8px; /* Rounded corners for the box */
-  background: #f9f9f9; /* Background color for scrollable area */
+  background: white; /* Background color for scrollable area */
 }
