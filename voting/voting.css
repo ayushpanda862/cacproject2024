@@ -50,7 +50,171 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   margin: 20px;
-  position: relative; /* Allows absolute positioning of arrows */
+  position: relative;
+}
+
+.voting-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px;
+  position: relative;
+}
+
+.voting-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.voting-feature h2 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.voting-feature p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Adjust width for responsiveness */
+  max-width: 100%;
+  max-height: 120px;
+}
+
+.countdown-item {
+  text-align: center;
+  font-size: 1rem; /* Default font size */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+  width: auto;
+}
+
+.countdown-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.countdown-item p::after {
+  content: attr(data-first-letter); /* Get the first letter */
+  display: block;
+  font-size: 1.5rem; /* Larger size for better visibility */
+}
+
+@media (max-width: 800px) {
+  .countdown-item p::after {
+    content: attr(data-first-letter); /* Get the first letter */
+    display: block;
+    font-size: 1.5rem; /* Larger font size for visibility */
+    color: #007bff;
+  }
+
+  .countdown-item p {
+    font-size: 1rem; /* Adjust font size */
+    color: #555;
+    white-space: nowrap;
+    overflow: visible;
+  }
+}
+
+/* Media query for smaller screens (max-width: 488px) */
+@media (max-width: 488px) {
+  .voting-feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Position the countdown timer at the bottom of the voting feature */
+  .countdown-timer {
+    position: absolute;
+    bottom: 10px; /* Push the timer slightly off the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Adjust width for small screens */
+    font-size: 1rem; /* Adjust font size */
+    padding: 10px;
+    gap: 10px;
+    max-width: 100%;
+    max-height: 100px;
+  }
+
+  /* Confine the text inside countdown items to fit */
+  .countdown-item {
+    font-size: 1rem; /* Ensure it scales */
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .countdown-item p {
+    font-size: 1rem; /* Ensure text doesn't overflow */
+    color: #555;
+    overflow: visible; /* Prevent overflow */
+    text-overflow: clip;
+  }
+}
+
+/* Adjust for the smallest screens (max-width: 320px) */
+@media (max-width: 320px) {
+  /* For the smallest screens (320x480) */
+  .voting-feature {
+    padding: 5px;
+    margin: 4px 0;
+    min-height: 100px; /* Reduce height for small screens */
+  }
+
+  .voting-feature h2 {
+    font-size: 1.4rem; /* Scale down further for very small screens */
+  }
+
+  .voting-feature p {
+    font-size: 0.8rem; /* Smaller font size on 320px screen */
+  }
+
+  .countdown-timer {
+    position: absolute;
+    bottom: 10px; /* Push the timer slightly off the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Adjust width for small screens */
+    font-size: 1rem; /* Adjust font size */
+    padding: 10px;
+    gap: 10px;
+    max-width: 100%;
+    max-height: 100px; /* Keep it within bounds */
+  }
 }
 
 .learn-more {
@@ -65,23 +229,6 @@ h1 {
   margin-top: 10px;
 }
 
-.voting-feature {
-  flex: 1; /* Allow boxes to take up available space */
-  background-color: #ffffff; /* White background */
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.voting-feature p {
-  margin-bottom: 10px;
-}
-
-.voting-feature h2 {
-  color: #007bff; /* Primary color for section headings */
-}
 
 .feature-button {
   background: #007bff; /* Button color */
@@ -135,48 +282,3 @@ footer {
   background: linear-gradient(135deg, #6a82fb, #007bff);
 }
 
-.countdown-timer {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 37.5%;
-  gap: 20px;
-  font-size: 1.5em;
-  font-weight: bold;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-@media (max-width: 650px) {
-    .countdown-timer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 37.5%;
-        gap: 20px;
-        font-size: 1.5em;
-        font-weight: bold;
-        padding: 20px;
-        background-color: #f8f8f8;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-      }
-      
-  }
-.countdown-item {
-  text-align: center;
-}
-.countdown-item p {
-  margin: 0;
-  font-size: 0.8em;
-  color: #555;
-}
